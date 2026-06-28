@@ -22,8 +22,6 @@
     <style>
         /* ============================================
            CSS VARIABLES & RESET
-           Variables CSS y Reset - Defines color scheme 
-           and base styles for consistent design
            ============================================ */
         :root {
             --color-white: #ffffff;
@@ -85,8 +83,6 @@
 
         /* ============================================
            HEADER & NAVIGATION
-           Encabezado y Navegación - Sticky header 
-           with logo, menu and language switcher
            ============================================ */
         .header {
             position: fixed;
@@ -208,8 +204,6 @@
 
         /* ============================================
            HERO SECTION
-           Sección Hero - Full-width intro with 
-           welding background image and CTA
            ============================================ */
         .hero {
             margin-top: 80px;
@@ -310,8 +304,6 @@
 
         /* ============================================
            SECTION STYLES
-           Estilos de Sección - Common styles for 
-           all content sections with padding
            ============================================ */
         .section {
             padding: 5rem 2rem;
@@ -352,8 +344,6 @@
 
         /* ============================================
            ABOUT SECTION
-           Sección Nosotros - Company info with 
-           industrial welding construction image
            ============================================ */
         .about {
             background: var(--color-gray);
@@ -426,8 +416,6 @@
 
         /* ============================================
            SERVICES SECTION
-           Sección Servicios - Grid of welding 
-           services with icons and descriptions
            ============================================ */
         .services-grid {
             display: grid;
@@ -476,11 +464,45 @@
 
         /* ============================================
            PROJECTS SECTION
-           Sección Proyectos - Portfolio gallery 
-           with modal lightbox for project details
            ============================================ */
         .projects {
             background: var(--color-gray);
+        }
+
+        .projects-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .pagination {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .pagination button {
+            padding: 0.5rem 1rem;
+            background: var(--color-white);
+            border: 2px solid var(--color-green);
+            color: var(--color-green);
+            border-radius: 5px;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .pagination button.active {
+            background: var(--color-green);
+            color: var(--color-white);
+        }
+
+        .pagination button:hover:not(.active) {
+            background: var(--color-gray);
+        }
+
+        .pagination button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         .projects-grid {
@@ -514,6 +536,82 @@
         .project-card:hover .project-image img {
             transform: scale(1.1);
         }
+
+        /* Three dots menu */
+        .project-menu {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 10;
+        }
+
+        .menu-dots {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .menu-dots:hover {
+            background: var(--color-white);
+            transform: scale(1.1);
+        }
+
+        .menu-dots i {
+            color: var(--color-text);
+            font-size: 1.2rem;
+        }
+
+        .share-dropdown {
+            position: absolute;
+            top: 50px;
+            right: 0;
+            background: var(--color-white);
+            border-radius: 10px;
+            box-shadow: var(--shadow-lg);
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            min-width: 200px;
+            z-index: 20;
+        }
+
+        .share-dropdown.active {
+            display: flex;
+        }
+
+        .share-option {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            border-radius: 5px;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .share-option:hover {
+            background: var(--color-gray);
+        }
+
+        .share-option i {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+
+        .share-option.instagram i { color: #E4405F; }
+        .share-option.x i { color: #000000; }
+        .share-option.facebook i { color: #1877F2; }
+        .share-option.whatsapp i { color: #25D366; }
+        .share-option.link i { color: var(--color-green); }
 
         .project-overlay {
             position: absolute;
@@ -580,8 +678,6 @@
 
         /* ============================================
            PROJECT MODAL
-           Modal de Proyecto - Lightbox with image 
-           slider showing before/after photos
            ============================================ */
         .modal {
             display: none;
@@ -756,6 +852,34 @@
             margin-bottom: 1rem;
         }
 
+        .technical-details {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: var(--color-white);
+            border-radius: 5px;
+        }
+
+        .technical-details h5 {
+            color: var(--color-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .technical-details ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .technical-details li {
+            padding: 0.25rem 0;
+            color: var(--color-text-light);
+        }
+
+        .technical-details li:before {
+            content: "▸ ";
+            color: var(--color-orange);
+            margin-right: 0.5rem;
+        }
+
         .modal-whatsapp {
             display: inline-flex;
             align-items: center;
@@ -776,8 +900,6 @@
 
         /* ============================================
            TESTIMONIALS SECTION
-           Sección Reseñas - Auto-rotating slider 
-           with customer reviews every 5 seconds
            ============================================ */
         .testimonials-slider {
             max-width: 800px;
@@ -840,8 +962,6 @@
 
         /* ============================================
            CONTACT SECTION
-           Sección Contacto - Form with validation 
-           and company contact information
            ============================================ */
         .contact-container {
             display: grid;
@@ -1016,8 +1136,6 @@
 
         /* ============================================
            FOOTER
-           Pie de Página - Social media icons with 
-           brand colors and copyright info
            ============================================ */
         .footer {
             background: var(--color-black);
@@ -1090,8 +1208,6 @@
 
         /* ============================================
            RESPONSIVE DESIGN
-           Diseño Responsivo - Mobile-first approach 
-           with breakpoints for tablets and phones
            ============================================ */
         @media (max-width: 992px) {
             .projects-grid {
@@ -1169,6 +1285,11 @@
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
+            .projects-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1191,8 +1312,6 @@
 
         /* ============================================
            UTILITY CLASSES
-           Clases de Utilidad - Helper classes for 
-           spacing, text alignment and visibility
            ============================================ */
         .text-center { text-align: center; }
         .mb-1 { margin-bottom: 0.5rem; }
@@ -1235,7 +1354,6 @@
     <header class="header" id="header">
         <div class="header-container">
             <a href="#home" class="logo">
-                <!-- Logo placeholder - Replace with actual logo image -->
                 <div style="width:60px;height:60px;background:var(--color-green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.5rem;">ST</div>
                 <span class="logo-text">Sole<span>Trade</span></span>
             </a>
@@ -1248,8 +1366,8 @@
                     <li><a href="#projects" class="nav-link" data-en="Projects" data-es="Proyectos">Projects</a></li>
                     <li><a href="#contact" class="nav-link" data-en="Contact" data-es="Contacto">Contact</a></li>
                     <li class="language-switcher">
-                        <button class="lang-btn active" onclick="switchLanguage('en')" aria-label="English">EN</button>
-                        <button class="lang-btn" onclick="switchLanguage('es')" aria-label="Español">ES</button>
+                        <button class="lang-btn active" id="btnEn" onclick="switchLanguage('en')" aria-label="English">EN</button>
+                        <button class="lang-btn" id="btnEs" onclick="switchLanguage('es')" aria-label="Español">ES</button>
                     </li>
                 </ul>
             </nav>
@@ -1344,12 +1462,67 @@
         <div class="services-grid">
             <div class="service-card">
                 <div class="service-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h3 data-en="Mobile Welding at Home" data-es="Soldadura Móvil a Domicilio">Mobile Welding at Home</h3>
+                <p data-en="Professional on-site welding services at your residence. We bring our equipment and expertise directly to your home for convenient repairs, modifications, and custom fabrications." 
+                   data-es="Servicios profesionales de soldadura en el lugar en su residencia. Llevamos nuestro equipo y experiencia directamente a su hogar para reparaciones, modificaciones y fabricaciones personalizadas convenientes.">
+                    Professional on-site welding services at your residence. We bring our equipment and expertise directly to your home for convenient repairs, modifications, and custom fabrications.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <h3 data-en="Contract Welding Services" data-es="Servicios de Soldadura por Contrato">Contract Welding Services</h3>
+                <p data-en="Long-term welding contracts for businesses and industrial facilities. Reliable, scheduled services to meet your ongoing welding needs with dedicated support." 
+                   data-es="Contratos de soldadura a largo plazo para empresas e instalaciones industriales. Servicios confiables y programados para satisfacer sus necesidades continuas de soldadura con soporte dedicado.">
+                    Long-term welding contracts for businesses and industrial facilities. Reliable, scheduled services to meet your ongoing welding needs with dedicated support.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
                     <i class="fas fa-truck-pickup"></i>
                 </div>
-                <h3 data-en="Mobile Welding" data-es="Soldadura Móvil">Mobile Welding</h3>
-                <p data-en="On-site welding services at your location. We bring our equipment and expertise directly to your home, farm, or business for convenient repairs and installations." 
-                   data-es="Servicios de soldadura en el lugar en su ubicación. Llevamos nuestro equipo y experiencia directamente a su hogar, granja o negocio para reparaciones e instalaciones convenientes.">
-                    On-site welding services at your location. We bring our equipment and expertise directly to your home, farm, or business for convenient repairs and installations.
+                <h3 data-en="Mobile Welding Unit" data-es="Unidad de Soldadura Móvil">Mobile Welding Unit</h3>
+                <p data-en="Fully equipped mobile welding unit that comes to you anywhere in Sydney. Perfect for emergency repairs, on-site fabrication, and projects that can't be moved." 
+                   data-es="Unidad de soldadura móvil totalmente equipada que va a cualquier lugar de Sydney. Perfecto para reparaciones de emergencia, fabricación en el lugar y proyectos que no se pueden mover.">
+                    Fully equipped mobile welding unit that comes to you anywhere in Sydney. Perfect for emergency repairs, on-site fabrication, and projects that can't be moved.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-home-alt"></i>
+                </div>
+                <h3 data-en="Residential Areas" data-es="Zonas Residenciales">Residential Areas</h3>
+                <p data-en="Specialized welding services for residential neighborhoods. Gates, fences, railings, structural repairs, and custom metalwork for homes and apartments." 
+                   data-es="Servicios de soldadura especializados para vecindarios residenciales. Portones, cercas, barandillas, reparaciones estructurales y trabajos de metal personalizados para hogares y apartamentos.">
+                    Specialized welding services for residential neighborhoods. Gates, fences, railings, structural repairs, and custom metalwork for homes and apartments.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-tree"></i>
+                </div>
+                <h3 data-en="Parks & Industrial Zones" data-es="Parques y Zonas Industriales">Parks & Industrial Zones</h3>
+                <p data-en="Welding services for public parks, recreational facilities, and industrial zones. Equipment repairs, structural work, and maintenance for public and private facilities." 
+                   data-es="Servicios de soldadura para parques públicos, instalaciones recreativas y zonas industriales. Reparaciones de equipos, trabajo estructural y mantenimiento para instalaciones públicas y privadas.">
+                    Welding services for public parks, recreational facilities, and industrial zones. Equipment repairs, structural work, and maintenance for public and private facilities.
+                </p>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-laptop-house"></i>
+                </div>
+                <h3 data-en="Remote Welding Sydney" data-es="Soldadura Remota Sydney">Remote Welding Sydney</h3>
+                <p data-en="Remote welding consultation and project management services in Sydney. Expert guidance for welding projects, inspections, and quality control from anywhere." 
+                   data-es="Servicios de consulta y gestión de proyectos de soldadura remota en Sydney. Orientación experta para proyectos de soldadura, inspecciones y control de calidad desde cualquier lugar.">
+                    Remote welding consultation and project management services in Sydney. Expert guidance for welding projects, inspections, and quality control from anywhere.
                 </p>
             </div>
 
@@ -1385,28 +1558,6 @@
                     Precision metal cutting and grooving services using advanced equipment. Clean cuts for various metals and materials to your exact specifications.
                 </p>
             </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 data-en="Security Installations" data-es="Instalaciones de Seguridad">Security Installations</h3>
-                <p data-en="Welding for security gates, fences, railings, and protective structures. Enhance your property security with our robust welding solutions." 
-                   data-es="Soldadura para portones de seguridad, cercas, barandillas y estructuras protectoras. Mejore la seguridad de su propiedad con nuestras robustas soluciones de soldadura.">
-                    Welding for security gates, fences, railings, and protective structures. Enhance your property security with our robust welding solutions.
-                </p>
-            </div>
-
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-tools"></i>
-                </div>
-                <h3 data-en="Custom Fabrication" data-es="Fabricación Personalizada">Custom Fabrication</h3>
-                <p data-en="Custom metal fabrication for unique projects. From concept to completion, we create bespoke metalwork solutions for your specific requirements." 
-                   data-es="Fabricación de metal personalizada para proyectos únicos. Desde el concepto hasta la finalización, creamos soluciones de metalistería a medida para sus requisitos específicos.">
-                    Custom metal fabrication for unique projects. From concept to completion, we create bespoke metalwork solutions for your specific requirements.
-                </p>
-            </div>
         </div>
     </section>
 
@@ -1418,6 +1569,12 @@
                data-es="Explore nuestro portafolio de proyectos de soldadura completados mostrando transformaciones antes y después">
                 Browse our portfolio of completed welding projects showcasing before and after transformations
             </p>
+        </div>
+
+        <div class="projects-header">
+            <div class="pagination" id="pagination">
+                <!-- Pagination buttons will be inserted by JavaScript -->
+            </div>
         </div>
 
         <div class="projects-grid" id="projectsGrid">
@@ -1455,6 +1612,12 @@
                 <div class="modal-description">
                     <h4 data-en="Project Details" data-es="Detalles del Proyecto">Project Details</h4>
                     <p id="modalDescription">Project description goes here...</p>
+                    <div class="technical-details">
+                        <h5 data-en="Technical Specifications" data-es="Especificaciones Técnicas">Technical Specifications</h5>
+                        <ul id="technicalSpecs">
+                            <!-- Technical specs will be inserted by JavaScript -->
+                        </ul>
+                    </div>
                     <a href="https://wa.me/61435496047" target="_blank" class="modal-whatsapp">
                         <i class="fab fa-whatsapp"></i>
                         <span data-en="Inquire about this project" data-es="Consultar sobre este proyecto">Inquire about this project</span>
@@ -1714,119 +1877,373 @@
     <!-- JavaScript -->
     <script>
         /**
-         * PROJECTS DATA
-         * Datos de Proyectos - Array containing 6 projects with 
-         * before/after images, titles, descriptions and WhatsApp links
+         * PROJECTS DATA - 15 Projects with welding-related images
          */
         const projectsData = [
             {
                 id: 1,
-                title: { en: "Industrial Factory Gate", es: "Portón Industrial de Fábrica" },
-                category: { en: "Security Installation", es: "Instalación de Seguridad" },
-                shortDesc: { en: "Heavy-duty security gate installation", es: "Instalación de portón de seguridad pesado" },
+                title: { en: "Mobile Welding - Residential Gate", es: "Soldadura Móvil - Portón Residencial" },
+                category: { en: "Residential Welding", es: "Soldadura Residencial" },
+                shortDesc: { en: "Custom security gate installation at home", es: "Instalación de portón de seguridad personalizado en domicilio" },
                 description: { 
-                    en: "Complete fabrication and installation of industrial security gates for a manufacturing facility in Western Sydney. The project included custom design, steel fabrication, automated opening mechanism, and professional installation. Before: Open entrance with no security. After: Robust sliding gate system with remote control access.",
-                    es: "Fabricación e instalación completa de portones de seguridad industrial para una instalación de manufactura en Western Sydney. El proyecto incluyó diseño personalizado, fabricación de acero, mecanismo de apertura automatizado e instalación profesional. Antes: Entrada abierta sin seguridad. Después: Robusto sistema de portón corredizo con acceso por control remoto."
+                    en: "Complete mobile welding service for residential property. Fabricated and installed custom steel security gate with automated opening system. Work completed on-site at client's home in Sydney suburbs.",
+                    es: "Servicio completo de soldadura móvil para propiedad residencial. Fabricación e instalación de portón de seguridad de acero personalizado con sistema de apertura automatizado. Trabajo completado en el lugar en el hogar del cliente en los suburbios de Sydney."
                 },
+                technicalSpecs: [
+                    { en: "Material: Steel powder-coated", es: "Material: Acero con recubrimiento en polvo" },
+                    { en: "Dimensions: 3m x 2m", es: "Dimensiones: 3m x 2m" },
+                    { en: "Welding Type: MIG/TIG", es: "Tipo de Soldadura: MIG/TIG" },
+                    { en: "Finish: Weather-resistant coating", es: "Acabado: Recubrimiento resistente a la intemperie" },
+                    { en: "Installation Time: 2 days", es: "Tiempo de Instalación: 2 días" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Before - Open entrance", es: "Antes - Entrada abierta" } },
-                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "During fabrication", es: "Durante la fabricación" } },
-                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Welding process", es: "Proceso de soldadura" } },
-                    { src: "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=800&q=80", caption: { en: "Installation in progress", es: "Instalación en progreso" } },
-                    { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", caption: { en: "After - Completed gate", es: "Después - Portón completado" } }
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Initial assessment and measurement", es: "Evaluación y medición inicial" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "On-site welding process", es: "Proceso de soldadura en el lugar" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Gate frame assembly", es: "Ensamblaje del marco del portón" } },
+                    { src: "https://images.unsplash.com/photo-1621905290180-5c4aa88591aa?w=800&q=80", caption: { en: "Automation system installation", es: "Instalación del sistema de automatización" } },
+                    { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", caption: { en: "Completed installation", es: "Instalación completada" } }
                 ]
             },
             {
                 id: 2,
-                title: { en: "Farm Equipment Repair", es: "Reparación de Equipo de Granja" },
-                category: { en: "Agricultural Welding", es: "Soldadura Agrícola" },
-                shortDesc: { en: "Mobile welding for farm machinery", es: "Soldadura móvil para maquinaria de granja" },
+                title: { en: "Factory Production Line Repair", es: "Reparación de Línea de Producción" },
+                category: { en: "Industrial Welding", es: "Soldadura Industrial" },
+                shortDesc: { en: "Emergency repair of manufacturing equipment", es: "Reparación de emergencia de equipo de manufactura" },
                 description: { 
-                    en: "Emergency on-site repair of agricultural equipment including tractor attachments, fencing repairs, and gate reinforcement. Our mobile welding unit responded within 2 hours to minimize downtime during harvest season. Services included structural repairs, component replacement, and preventative maintenance recommendations.",
-                    es: "Reparación de emergencia en el lugar de equipos agrícolas incluyendo accesorios de tractor, reparaciones de cercas y refuerzo de portones. Nuestra unidad de soldadura móvil respondió en menos de 2 horas para minimizar el tiempo de inactividad durante la temporada de cosecha. Los servicios incluyeron reparaciones estructurales, reemplazo de componentes y recomendaciones de mantenimiento preventivo."
+                    en: "Contract welding service for manufacturing facility. Repaired critical production line equipment to minimize downtime. Work included structural reinforcement and component replacement.",
+                    es: "Servicio de soldadura por contrato para instalación de manufactura. Reparación de equipo crítico de línea de producción para minimizar tiempo de inactividad. El trabajo incluyó refuerzo estructural y reemplazo de componentes."
                 },
+                technicalSpecs: [
+                    { en: "Material: Stainless Steel 316", es: "Material: Acero Inoxidable 316" },
+                    { en: "Welding Process: TIG", es: "Proceso de Soldadura: TIG" },
+                    { en: "Thickness: 8mm", es: "Espesor: 8mm" },
+                    { en: "Certification: AS1554 compliant", es: "Certificación: Cumple AS1554" },
+                    { en: "Completion: 24 hours", es: "Completado: 24 horas" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=800&q=80", caption: { en: "Before - Damaged equipment", es: "Antes - Equipo dañado" } },
-                    { src: "https://images.unsplash.com/photo-1530267981375-f0de93fe1e84?w=800&q=80", caption: { en: "On-site welding", es: "Soldadura en el lugar" } },
-                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Precision repair work", es: "Trabajo de reparación de precisión" } },
-                    { src: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=800&q=80", caption: { en: "Fencing reinforcement", es: "Refuerzo de cerca" } },
-                    { src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80", caption: { en: "After - Fully operational", es: "Después - Totalmente operativo" } }
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Damaged equipment assessment", es: "Evaluación de equipo dañado" } },
+                    { src: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", caption: { en: "Precision TIG welding", es: "Soldadura TIG de precisión" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Structural reinforcement", es: "Refuerzo estructural" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Quality inspection", es: "Inspección de calidad" } },
+                    { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", caption: { en: "Operational equipment", es: "Equipo operativo" } }
                 ]
             },
             {
                 id: 3,
-                title: { en: "Commercial Building Staircase", es: "Escalera de Edificio Comercial" },
-                category: { en: "Structural Steel", es: "Acero Estructural" },
-                shortDesc: { en: "Custom steel staircase fabrication", es: "Fabricación de escalera de acero personalizada" },
+                title: { en: "Farm Equipment Repair", es: "Reparación de Equipo de Granja" },
+                category: { en: "Agricultural Welding", es: "Soldadura Agrícola" },
+                shortDesc: { en: "Mobile welding for tractor and fencing", es: "Soldadura móvil para tractor y cercas" },
                 description: { 
-                    en: "Design and fabrication of custom steel staircase for a commercial office building in Sydney CBD. The project involved architectural consultation, precise measurements, custom railings with glass panels, and compliance with all building codes. Timeline: 3 weeks from design to installation.",
-                    es: "Diseño y fabricación de escalera de acero personalizada para un edificio de oficinas comercial en Sydney CBD. El proyecto involucró consulta arquitectónica, mediciones precisas, barandillas personalizadas con paneles de vidrio y cumplimiento de todos los códigos de construcción. Cronograma: 3 semanas desde el diseño hasta la instalación."
+                    en: "On-site mobile welding service for agricultural property. Repaired tractor attachments, reinforced fencing, and fabricated custom gate. Emergency service during harvest season.",
+                    es: "Servicio de soldadura móvil en el lugar para propiedad agrícola. Reparación de accesorios de tractor, refuerzo de cercas y fabricación de portón personalizado. Servicio de emergencia durante la temporada de cosecha."
                 },
+                technicalSpecs: [
+                    { en: "Equipment: Tractor attachments", es: "Equipo: Accesorios de tractor" },
+                    { en: "Material: High-tensile steel", es: "Material: Acero de alta resistencia" },
+                    { en: "Welding: Stick/MIG", es: "Soldadura: Electrodo/MIG" },
+                    { en: "Fencing: 200m repaired", es: "Cerca: 200m reparados" },
+                    { en: "Response Time: 2 hours", es: "Tiempo de Respuesta: 2 horas" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80", caption: { en: "Before - Construction site", es: "Antes - Sitio de construcción" } },
-                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Steel framework", es: "Estructura de acero" } },
-                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Welding details", es: "Detalles de soldadura" } },
-                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Glass panel installation", es: "Instalación de panel de vidrio" } },
-                    { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", caption: { en: "After - Finished staircase", es: "Después - Escalera terminada" } }
+                    { src: "https://images.unsplash.com/photo-1595246140625-573b715d11dc?w=800&q=80", caption: { en: "Tractor attachment repair", es: "Reparación de accesorio de tractor" } },
+                    { src: "https://images.unsplash.com/photo-1530267981375-f0de93fe1e84?w=800&q=80", caption: { en: "Mobile welding unit on-site", es: "Unidad de soldadura móvil en el lugar" } },
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Fencing reinforcement", es: "Refuerzo de cerca" } },
+                    { src: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=800&q=80", caption: { en: "Custom gate fabrication", es: "Fabricación de portón personalizado" } },
+                    { src: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80", caption: { en: "Completed farm repairs", es: "Reparaciones de granja completadas" } }
                 ]
             },
             {
                 id: 4,
-                title: { en: "Restaurant Kitchen Equipment", es: "Equipo de Cocina de Restaurante" },
-                category: { en: "Commercial Fabrication", es: "Fabricación Comercial" },
-                shortDesc: { en: "Stainless steel kitchen fabrication", es: "Fabricación de cocina de acero inoxidable" },
+                title: { en: "Commercial Building Staircase", es: "Escalera de Edificio Comercial" },
+                category: { en: "Structural Steel", es: "Acero Estructural" },
+                shortDesc: { en: "Custom steel staircase with glass panels", es: "Escalera de acero personalizada con paneles de vidrio" },
                 description: { 
-                    en: "Complete commercial kitchen setup including stainless steel benches, shelving units, exhaust hood supports, and custom storage solutions. All work completed to food safety standards with smooth welds and easy-to-clean surfaces. Project completed in 2 weeks for new restaurant opening.",
-                    es: "Configuración completa de cocina comercial incluyendo bancos de acero inoxidable, unidades de estantería, soportes de campana extractora y soluciones de almacenamiento personalizadas. Todo el trabajo completado según estándares de seguridad alimentaria con soldaduras lisas y superficies fáciles de limpiar. Proyecto completado en 2 semanas para la apertura de un nuevo restaurante."
+                    en: "Architectural welding for commercial office building in Sydney CBD. Custom steel staircase with glass panel railings. Full compliance with building codes and safety standards.",
+                    es: "Soldadura arquitectónica para edificio de oficinas comercial en Sydney CBD. Escalera de acero personalizada con barandillas de paneles de vidrio. Total cumplimiento de códigos de construcción y estándares de seguridad."
                 },
+                technicalSpecs: [
+                    { en: "Structure: Steel I-beams", es: "Estructura: Vigas I de acero" },
+                    { en: "Railings: Tempered glass panels", es: "Barandillas: Paneles de vidrio templado" },
+                    { en: "Welding: Certified structural", es: "Soldadura: Estructural certificada" },
+                    { en: "Load Capacity: 500kg/m²", es: "Capacidad de Carga: 500kg/m²" },
+                    { en: "Timeline: 3 weeks", es: "Cronograma: 3 semanas" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80", caption: { en: "Before - Empty space", es: "Antes - Espacio vacío" } },
-                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Stainless steel work", es: "Trabajo de acero inoxidable" } },
-                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Precision welding", es: "Soldadura de precisión" } },
-                    { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80", caption: { en: "Installation", es: "Instalación" } },
-                    { src: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80", caption: { en: "After - Operational kitchen", es: "Después - Cocina operativa" } }
+                    { src: "https://images.unsplash.com/photo-1513828583688-c52646db42da?w=800&q=80", caption: { en: "Steel framework installation", es: "Instalación de estructura de acero" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Precision welding work", es: "Trabajo de soldadura de precisión" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Glass panel mounting", es: "Montaje de panel de vidrio" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Finishing touches", es: "Toques finales" } },
+                    { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", caption: { en: "Completed staircase", es: "Escalera completada" } }
                 ]
             },
             {
                 id: 5,
-                title: { en: "Residential Security Fence", es: "Cerca de Seguridad Residencial" },
-                category: { en: "Residential Security", es: "Seguridad Residencial" },
-                shortDesc: { en: "Custom ornamental fence installation", es: "Instalación de cerca ornamental personalizada" },
+                title: { en: "Park Infrastructure Welding", es: "Soldadura de Infraestructura de Parque" },
+                category: { en: "Public Works", es: "Obras Públicas" },
+                shortDesc: { en: "Recreational equipment and structures", es: "Equipamiento recreativo y estructuras" },
                 description: { 
-                    en: "Decorative yet secure fencing solution for residential property. Combined aesthetic appeal with robust security features including anti-climb design, reinforced posts, and automated gate. Materials: Powder-coated steel with ornamental details. Completed in 10 days.",
-                    es: "Solución de cercado decorativo pero seguro para propiedad residencial. Combinó atractivo estético con características de seguridad robustas incluyendo diseño antiescalada, postes reforzados y portón automatizado. Materiales: Acero con recubrimiento en polvo con detalles ornamentales. Completado en 10 días."
+                    en: "Welding services for public park in industrial zone. Repaired and fabricated playground equipment, picnic shelters, and security fencing. Weather-resistant finishes applied.",
+                    es: "Servicios de soldadura para parque público en zona industrial. Reparación y fabricación de equipos de juegos, refugios de picnic y cercas de seguridad. Acabados resistentes a la intemperie aplicados."
                 },
+                technicalSpecs: [
+                    { en: "Material: Galvanized steel", es: "Material: Acero galvanizado" },
+                    { en: "Finish: Powder coating", es: "Acabado: Recubrimiento en polvo" },
+                    { en: "Safety: AS4685 compliant", es: "Seguridad: Cumple AS4685" },
+                    { en: "Structures: 5 installations", es: "Estructuras: 5 instalaciones" },
+                    { en: "Duration: 2 weeks", es: "Duración: 2 semanas" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Before - Old fence", es: "Antes - Cerca vieja" } },
-                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Post installation", es: "Instalación de postes" } },
-                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Panel welding", es: "Soldadura de paneles" } },
-                    { src: "https://images.unsplash.com/photo-1621905290180-5c4aa88591aa?w=800&q=80", caption: { en: "Gate mechanism", es: "Mecanismo de portón" } },
-                    { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", caption: { en: "After - Completed fence", es: "Después - Cerca completada" } }
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Playground structure welding", es: "Soldadura de estructura de juegos" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Shelter frame assembly", es: "Ensamblaje de marco de refugio" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Security fence installation", es: "Instalación de cerca de seguridad" } },
+                    { src: "https://images.unsplash.com/photo-1621905290180-5c4aa88591aa?w=800&q=80", caption: { en: "Powder coating application", es: "Aplicación de recubrimiento en polvo" } },
+                    { src: "https://images.unsplash.com/photo-1563514227147-6d2ff665a6a0?w=800&q=80", caption: { en: "Completed park facilities", es: "Instalaciones de parque completadas" } }
                 ]
             },
             {
                 id: 6,
+                title: { en: "Restaurant Kitchen Equipment", es: "Equipo de Cocina de Restaurante" },
+                category: { en: "Commercial Fabrication", es: "Fabricación Comercial" },
+                shortDesc: { en: "Stainless steel kitchen fabrication", es: "Fabricación de cocina de acero inoxidable" },
+                description: { 
+                    en: "Complete commercial kitchen setup for new restaurant. Stainless steel benches, shelving, exhaust hood supports, and custom storage solutions. Food safety compliant.",
+                    es: "Configuración completa de cocina comercial para nuevo restaurante. Bancos de acero inoxidable, estanterías, soportes de campana extractora y soluciones de almacenamiento personalizadas. Cumple con seguridad alimentaria."
+                },
+                technicalSpecs: [
+                    { en: "Material: Stainless Steel 304", es: "Material: Acero Inoxidable 304" },
+                    { en: "Finish: Food-grade polish", es: "Acabado: Pulido grado alimenticio" },
+                    { en: "Welds: Sanitary finish", es: "Soldaduras: Acabado sanitario" },
+                    { en: "Compliance: HACCP certified", es: "Cumplimiento: Certificado HACCP" },
+                    { en: "Installation: 2 weeks", es: "Instalación: 2 semanas" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80", caption: { en: "Stainless steel bench fabrication", es: "Fabricación de banco de acero inoxidable" } },
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Precision welding", es: "Soldadura de precisión" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Shelving unit installation", es: "Instalación de unidad de estantería" } },
+                    { src: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80", caption: { en: "Exhaust hood supports", es: "Soportes de campana extractora" } },
+                    { src: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=800&q=80", caption: { en: "Completed kitchen", es: "Cocina completada" } }
+                ]
+            },
+            {
+                id: 7,
+                title: { en: "Residential Security Fence", es: "Cerca de Seguridad Residencial" },
+                category: { en: "Residential Security", es: "Seguridad Residencial" },
+                shortDesc: { en: "Ornamental security fencing", es: "Cercado de seguridad ornamental" },
+                description: { 
+                    en: "Decorative yet secure fencing for residential property. Combined aesthetic appeal with robust security features including anti-climb design and automated gate.",
+                    es: "Cercado decorativo pero seguro para propiedad residencial. Combinó atractivo estético con características de seguridad robustas incluyendo diseño antiescalada y portón automatizado."
+                },
+                technicalSpecs: [
+                    { en: "Material: Powder-coated steel", es: "Material: Acero con recubrimiento en polvo" },
+                    { en: "Height: 2.4m", es: "Altura: 2.4m" },
+                    { en: "Design: Anti-climb ornamental", es: "Diseño: Ornamental antiescalada" },
+                    { en: "Gate: Automated sliding", es: "Portón: Corredizo automatizado" },
+                    { en: "Length: 45m", es: "Longitud: 45m" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Post installation", es: "Instalación de postes" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Panel welding", es: "Soldadura de paneles" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Ornamental details", es: "Detalles ornamentales" } },
+                    { src: "https://images.unsplash.com/photo-1621905290180-5c4aa88591aa?w=800&q=80", caption: { en: "Gate mechanism", es: "Mecanismo de portón" } },
+                    { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80", caption: { en: "Completed fence", es: "Cerca completada" } }
+                ]
+            },
+            {
+                id: 8,
                 title: { en: "Warehouse Racking System", es: "Sistema de Estanterías de Almacén" },
                 category: { en: "Industrial Storage", es: "Almacenamiento Industrial" },
-                shortDesc: { en: "Heavy-duty storage solution", es: "Solución de almacenamiento pesado" },
+                shortDesc: { en: "Heavy-duty pallet racking", es: "Estanterías para pallets pesados" },
                 description: { 
-                    en: "Design and installation of industrial-grade pallet racking system for distribution warehouse. Load capacity: 2000kg per level. Features include seismic bracing, safety locks, and optimized layout for forklift access. Project increased storage capacity by 300%. Duration: 4 weeks.",
-                    es: "Diseño e instalación de sistema de estanterías para pallets de grado industrial para almacén de distribución. Capacidad de carga: 2000kg por nivel. Las características incluyen refuerzo sísmico, cerraduras de seguridad y diseño optimizado para acceso de montacargas. El proyecto aumentó la capacidad de almacenamiento en un 300%. Duración: 4 semanas."
+                    en: "Industrial-grade pallet racking system for distribution warehouse. Load capacity 2000kg per level with seismic bracing and safety locks.",
+                    es: "Sistema de estanterías para pallets de grado industrial para almacén de distribución. Capacidad de carga 2000kg por nivel con refuerzo sísmico y cerraduras de seguridad."
                 },
+                technicalSpecs: [
+                    { en: "Load Capacity: 2000kg/level", es: "Capacidad de Carga: 2000kg/nivel" },
+                    { en: "Material: Structural steel", es: "Material: Acero estructural" },
+                    { en: "Safety: Seismic bracing", es: "Seguridad: Refuerzo sísmico" },
+                    { en: "Levels: 5-tier system", es: "Niveles: Sistema de 5 niveles" },
+                    { en: "Installation: 4 weeks", es: "Instalación: 4 semanas" }
+                ],
                 images: [
-                    { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", caption: { en: "Before - Limited storage", es: "Antes - Almacenamiento limitado" } },
-                    { src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", caption: { en: "Framework assembly", es: "Ensamblaje de estructura" } },
-                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Structural welding", es: "Soldadura estructural" } },
-                    { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", caption: { en: "Installation progress", es: "Progreso de instalación" } },
-                    { src: "https://images.unsplash.com/photo-1587293852726-70cdb59c20fd?w=800&q=80", caption: { en: "After - Full capacity", es: "Después - Capacidad completa" } }
+                    { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", caption: { en: "Framework assembly", es: "Ensamblaje de estructura" } },
+                    { src: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", caption: { en: "Structural welding", es: "Soldadura estructural" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Beam installation", es: "Instalación de vigas" } },
+                    { src: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80", caption: { en: "Safety lock installation", es: "Instalación de cerradura de seguridad" } },
+                    { src: "https://images.unsplash.com/photo-1587293852726-70cdb59c20fd?w=800&q=80", caption: { en: "Completed racking system", es: "Sistema de estanterías completado" } }
+                ]
+            },
+            {
+                id: 9,
+                title: { en: "Remote Welding Consultation", es: "Consultoría de Soldadura Remota" },
+                category: { en: "Consulting Services", es: "Servicios de Consultoría" },
+                shortDesc: { en: "Remote project management Sydney", es: "Gestión de proyectos remota Sydney" },
+                description: { 
+                    en: "Remote welding consultation and quality control for industrial project in Sydney. Virtual inspections, technical guidance, and project management services.",
+                    es: "Consultoría de soldadura remota y control de calidad para proyecto industrial en Sydney. Inspecciones virtuales, orientación técnica y servicios de gestión de proyectos."
+                },
+                technicalSpecs: [
+                    { en: "Service: Remote consultation", es: "Servicio: Consultoría remota" },
+                    { en: "Inspection: Virtual QC", es: "Inspección: Control de calidad virtual" },
+                    { en: "Documentation: Digital reports", es: "Documentación: Informes digitales" },
+                    { en: "Standards: AS/NZS 1554", es: "Estándares: AS/NZS 1554" },
+                    { en: "Duration: Ongoing", es: "Duración: Continua" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", caption: { en: "Virtual inspection setup", es: "Configuración de inspección virtual" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Remote quality control", es: "Control de calidad remoto" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Technical documentation", es: "Documentación técnica" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Project management", es: "Gestión de proyectos" } },
+                    { src: "https://images.unsplash.com/photo-1581092160659-2429d80f07c1?w=800&q=80", caption: { en: "Final report delivery", es: "Entrega de informe final" } }
+                ]
+            },
+            {
+                id: 10,
+                title: { en: "Industrial Zone Maintenance", es: "Mantenimiento de Zona Industrial" },
+                category: { en: "Contract Services", es: "Servicios por Contrato" },
+                shortDesc: { en: "Ongoing welding maintenance contract", es: "Contrato de mantenimiento de soldadura continuo" },
+                description: { 
+                    en: "Long-term contract welding services for industrial zone. Scheduled maintenance, emergency repairs, and equipment upgrades for multiple facilities.",
+                    es: "Servicios de soldadura por contrato a largo plazo para zona industrial. Mantenimiento programado, reparaciones de emergencia y actualizaciones de equipo para múltiples instalaciones."
+                },
+                technicalSpecs: [
+                    { en: "Contract: 12 months", es: "Contrato: 12 meses" },
+                    { en: "Facilities: 5 locations", es: "Instalaciones: 5 ubicaciones" },
+                    { en: "Service: 24/7 availability", es: "Servicio: Disponibilidad 24/7" },
+                    { en: "Response: 4 hours max", es: "Respuesta: 4 horas máx" },
+                    { en: "Team: 3 certified welders", es: "Equipo: 3 soldadores certificados" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Scheduled maintenance", es: "Mantenimiento programado" } },
+                    { src: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", caption: { en: "Equipment inspection", es: "Inspección de equipo" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Emergency repair", es: "Reparación de emergencia" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Equipment upgrade", es: "Actualización de equipo" } },
+                    { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", caption: { en: "Completed maintenance", es: "Mantenimiento completado" } }
+                ]
+            },
+            {
+                id: 11,
+                title: { en: "Custom Metal Fabrication", es: "Fabricación de Metal Personalizada" },
+                category: { en: "Custom Work", es: "Trabajo Personalizado" },
+                shortDesc: { en: "Bespoke metalwork solutions", es: "Soluciones de metalistería a medida" },
+                description: { 
+                    en: "Custom metal fabrication for unique architectural project. Bespoke steelwork including decorative elements, structural components, and artistic installations.",
+                    es: "Fabricación de metal personalizada para proyecto arquitectónico único. Trabajos de acero a medida incluyendo elementos decorativos, componentes estructurales e instalaciones artísticas."
+                },
+                technicalSpecs: [
+                    { en: "Design: Custom architectural", es: "Diseño: Arquitectónico personalizado" },
+                    { en: "Material: Mixed metals", es: "Material: Metales mixtos" },
+                    { en: "Finish: Custom patina", es: "Acabado: Pátina personalizada" },
+                    { en: "Technique: TIG/MIG/Stick", es: "Técnica: TIG/MIG/Electrodo" },
+                    { en: "Timeline: 6 weeks", es: "Cronograma: 6 semanas" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Design consultation", es: "Consultoría de diseño" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Custom fabrication", es: "Fabricación personalizada" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Decorative elements", es: "Elementos decorativos" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Artistic installation", es: "Instalación artística" } },
+                    { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80", caption: { en: "Completed project", es: "Proyecto completado" } }
+                ]
+            },
+            {
+                id: 12,
+                title: { en: "Cutting & Grooving Service", es: "Servicio de Corte y Ranurado" },
+                category: { en: "Metal Cutting", es: "Corte de Metal" },
+                shortDesc: { en: "Precision metal cutting", es: "Corte de metal de precisión" },
+                description: { 
+                    en: "Advanced cutting and grooving services for industrial clients. Precision cuts in various metals using plasma, oxy-fuel, and waterjet cutting technologies.",
+                    es: "Servicios avanzados de corte y ranurado para clientes industriales. Cortes de precisión en varios metales usando tecnologías de corte por plasma, oxicombustible y chorro de agua."
+                },
+                technicalSpecs: [
+                    { en: "Technology: Plasma/Waterjet", es: "Tecnología: Plasma/Chorro de agua" },
+                    { en: "Thickness: Up to 100mm", es: "Espesor: Hasta 100mm" },
+                    { en: "Tolerance: ±0.5mm", es: "Tolerancia: ±0.5mm" },
+                    { en: "Materials: Steel/Aluminum", es: "Materiales: Acero/Aluminio" },
+                    { en: "CNC: Computer controlled", es: "CNC: Controlado por computadora" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Plasma cutting", es: "Corte por plasma" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Precision grooving", es: "Ranurado de precisión" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "CNC operation", es: "Operación CNC" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Quality inspection", es: "Inspección de calidad" } },
+                    { src: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80", caption: { en: "Finished components", es: "Componentes terminados" } }
+                ]
+            },
+            {
+                id: 13,
+                title: { en: "Bridge Repair Welding", es: "Soldadura de Reparación de Puente" },
+                category: { en: "Infrastructure", es: "Infraestructura" },
+                shortDesc: { en: "Structural bridge maintenance", es: "Mantenimiento estructural de puente" },
+                description: { 
+                    en: "Critical structural welding for bridge maintenance in Sydney. Repaired load-bearing components and reinforced structural elements to extend bridge lifespan.",
+                    es: "Soldadura estructural crítica para mantenimiento de puente en Sydney. Reparación de componentes de carga y refuerzo de elementos estructurales para extender la vida útil del puente."
+                },
+                technicalSpecs: [
+                    { en: "Structure: Steel bridge", es: "Estructura: Puente de acero" },
+                    { en: "Welding: Structural certified", es: "Soldadura: Estructural certificada" },
+                    { en: "Standard: AS5100 compliant", es: "Estándar: Cumple AS5100" },
+                    { en: "Inspection: NDT tested", es: "Inspección: Prueba NDT" },
+                    { en: "Duration: 3 weeks", es: "Duración: 3 semanas" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Structural assessment", es: "Evaluación estructural" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Load-bearing repair", es: "Reparación de carga" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Reinforcement welding", es: "Soldadura de refuerzo" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "NDT inspection", es: "Inspección NDT" } },
+                    { src: "https://images.unsplash.com/photo-1545324412-cc5f0d52afb7?w=800&q=80", caption: { en: "Completed bridge", es: "Puente completado" } }
+                ]
+            },
+            {
+                id: 14,
+                title: { en: "Apartment Balcony Railings", es: "Barandillas de Balcón de Apartamento" },
+                category: { en: "Residential", es: "Residencial" },
+                shortDesc: { en: "Modern balcony railing installation", es: "Instalación moderna de barandilla de balcón" },
+                description: { 
+                    en: "Contemporary balcony railing system for residential apartment complex. Glass and steel combination with modern aesthetic and full code compliance.",
+                    es: "Sistema de barandilla de balcón contemporáneo para complejo de apartamentos residenciales. Combinación de vidrio y acero con estética moderna y total cumplimiento de código."
+                },
+                technicalSpecs: [
+                    { en: "Material: Stainless steel & glass", es: "Material: Acero inoxidable y vidrio" },
+                    { en: "Glass: 12mm tempered", es: "Vidrio: 12mm templado" },
+                    { en: "Height: 1.2m compliant", es: "Altura: 1.2m conforme" },
+                    { en: "Finish: Brushed stainless", es: "Acabado: Acero inoxidable cepillado" },
+                    { en: "Units: 24 balconies", es: "Unidades: 24 balcones" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Frame installation", es: "Instalación de marco" } },
+                    { src: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80", caption: { en: "Steel welding", es: "Soldadura de acero" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Glass panel mounting", es: "Montaje de panel de vidrio" } },
+                    { src: "https://images.unsplash.com/photo-1621905290180-5c4aa88591aa?w=800&q=80", caption: { en: "Finishing work", es: "Trabajo de acabado" } },
+                    { src: "https://images.unsplash.com/photo-1600585154529-94e1c9414b9b?w=800&q=80", caption: { en: "Completed balconies", es: "Balcones completados" } }
+                ]
+            },
+            {
+                id: 15,
+                title: { en: "Mining Equipment Repair", es: "Reparación de Equipo Minero" },
+                category: { en: "Heavy Industry", es: "Industria Pesada" },
+                shortDesc: { en: "Heavy equipment welding", es: "Soldadura de equipo pesado" },
+                description: { 
+                    en: "Heavy-duty welding for mining equipment in remote industrial zone. Repaired excavator buckets, truck beds, and conveyor systems with wear-resistant materials.",
+                    es: "Soldadura pesada para equipo minero en zona industrial remota. Reparación de cucharones de excavadora, cajas de camión y sistemas transportadores con materiales resistentes al desgaste."
+                },
+                technicalSpecs: [
+                    { en: "Equipment: Mining machinery", es: "Equipo: Maquinaria minera" },
+                    { en: "Material: Hardox steel", es: "Material: Acero Hardox" },
+                    { en: "Welding: Hardfacing", es: "Soldadura: Recubrimiento duro" },
+                    { en: "Thickness: Up to 50mm", es: "Espesor: Hasta 50mm" },
+                    { en: "Location: Remote site", es: "Ubicación: Sitio remoto" }
+                ],
+                images: [
+                    { src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80", caption: { en: "Excavator bucket repair", es: "Reparación de cucharón de excavadora" } },
+                    { src: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&q=80", caption: { en: "Hardfacing application", es: "Aplicación de recubrimiento duro" } },
+                    { src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80", caption: { en: "Truck bed repair", es: "Reparación de caja de camión" } },
+                    { src: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=800&q=80", caption: { en: "Conveyor system", es: "Sistema transportador" } },
+                    { src: "https://images.unsplash.com/photo-1587293852726-70cdb59c20fd?w=800&q=80", caption: { en: "Completed repairs", es: "Reparaciones completadas" } }
                 ]
             }
         ];
 
         /**
          * TESTIMONIALS DATA
-         * Datos de Testimonios - Array with 5 client reviews 
-         * including name, company and testimonial text
          */
         const testimonialsData = [
             {
@@ -1878,39 +2295,70 @@
 
         /**
          * GLOBAL VARIABLES
-         * Variables Globales - State management for 
-         * language, current project, sliders and intervals
          */
         let currentLang = 'en';
         let currentProject = null;
         let currentSlide = 0;
         let testimonialInterval;
         let testimonialIndex = 0;
+        let currentPage = 1;
+        const projectsPerPage = 5;
 
         /**
          * INITIALIZATION
-         * Inicialización - Initialize all components when 
-         * DOM is loaded including projects, testimonials and events
          */
         document.addEventListener('DOMContentLoaded', function() {
             renderProjects();
+            renderPagination();
             renderTestimonials();
             initEventListeners();
             initCounterAnimation();
             startTestimonialSlider();
+            
+            // Set English as default language
+            switchLanguage('en');
         });
 
         /**
-         * RENDER PROJECTS
-         * Renderizar Proyectos - Dynamically create project cards 
-         * grid from projectsData array with bilingual content
+         * RENDER PROJECTS WITH PAGINATION
          */
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projectsData.map(project => `
+            const start = (currentPage - 1) * projectsPerPage;
+            const end = start + projectsPerPage;
+            const projectsToShow = projectsData.slice(start, end);
+            
+            grid.innerHTML = projectsToShow.map(project => `
                 <div class="project-card" onclick="openModal(${project.id})">
                     <div class="project-image">
                         <img src="${project.images[0].src}" alt="${project.title[currentLang]}" loading="lazy">
+                        <div class="project-menu">
+                            <div class="menu-dots" onclick="toggleShareMenu(event, ${project.id})">
+                                <i class="fas fa-ellipsis-v"></i>
+                            </div>
+                            <div class="share-dropdown" id="share-${project.id}">
+                                <div class="share-option instagram" onclick="shareToInstagram(${project.id}, event)">
+                                    <i class="fab fa-instagram"></i>
+                                    <span>${currentLang === 'en' ? 'Instagram' : 'Instagram'}</span>
+                                </div>
+                                <div class="share-option x" onclick="shareToX(${project.id}, event)">
+                                    <i class="fab fa-x-twitter"></i>
+                                    <span>X</span>
+                                </div>
+                                <div class="share-option facebook" onclick="shareToFacebook(${project.id}, event)">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span>${currentLang === 'en' ? 'Facebook' : 'Facebook'}</span>
+                                </div>
+                                <div class="share-option whatsapp" onclick="shareToWhatsApp(${project.id}, event)">
+                                    <i class="fab fa-whatsapp"></i>
+                                    <span>${currentLang === 'en' ? 'WhatsApp' : 'WhatsApp'}</span>
+                                </div>
+                                <div class="share-option link" onclick="copyLink(${project.id}, event)">
+                                    <i class="fas fa-link"></i>
+                                    <span>${currentLang === 'en' ? 'Copy Link' : 'Copiar Enlace'}</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="project-overlay">
                             <h3>${project.title[currentLang]}</h3>
                             <p>${project.shortDesc[currentLang]}</p>
@@ -1930,34 +2378,131 @@
         }
 
         /**
-         * RENDER TESTIMONIALS
-         * Renderizar Testimonios - Create testimonial slides 
-         * and navigation dots from testimonialsData array
+         * RENDER PAGINATION
          */
-        function renderTestimonials() {
-            const track = document.getElementById('testimonialsTrack');
-            const dotsContainer = document.getElementById('testimonialDots');
+        function renderPagination() {
+            const totalPages = Math.ceil(projectsData.length / projectsPerPage);
+            const pagination = document.getElementById('pagination');
             
-            track.innerHTML = testimonialsData.map(t => `
-                <div class="testimonial">
-                    <div class="testimonial-avatar">
-                        <img src="${t.image}" alt="${t.name}" loading="lazy">
-                    </div>
-                    <p class="testimonial-text">"${t.text[currentLang]}"</p>
-                    <div class="testimonial-name">${t.name}</div>
-                    <div class="testimonial-company">${t.company}</div>
-                </div>
-            `).join('');
+            let html = '';
             
-            dotsContainer.innerHTML = testimonialsData.map((_, i) => `
-                <button class="dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})" aria-label="Testimonial ${i + 1}"></button>
-            `).join('');
+            // Previous button
+            html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+                <i class="fas fa-chevron-left"></i> ${currentLang === 'en' ? 'Prev' : 'Ant'}
+            </button>`;
+            
+            // Page numbers
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
+            }
+            
+            // Next button
+            html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+                ${currentLang === 'en' ? 'Next' : 'Sig'} <i class="fas fa-chevron-right"></i>
+            </button>`;
+            
+            pagination.innerHTML = html;
+        }
+
+        /**
+         * CHANGE PAGE
+         */
+        function changePage(page) {
+            const totalPages = Math.ceil(projectsData.length / projectsPerPage);
+            if (page < 1 || page > totalPages) return;
+            
+            currentPage = page;
+            renderProjects();
+            renderPagination();
+            
+            // Scroll to projects section
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /**
+         * TOGGLE SHARE MENU
+         */
+        function toggleShareMenu(event, projectId) {
+            event.stopPropagation();
+            
+            // Close all other menus
+            document.querySelectorAll('.share-dropdown').forEach(menu => {
+                if (menu.id !== `share-${projectId}`) {
+                    menu.classList.remove('active');
+                }
+            });
+            
+            // Toggle current menu
+            const menu = document.getElementById(`share-${projectId}`);
+            menu.classList.toggle('active');
+        }
+
+        /**
+         * SHARE FUNCTIONS
+         */
+        function shareToInstagram(projectId, event) {
+            event.stopPropagation();
+            const project = projectsData.find(p => p.id === projectId);
+            const url = `https://www.instagram.com/`;
+            window.open(url, '_blank');
+            closeAllShareMenus();
+        }
+
+        function shareToX(projectId, event) {
+            event.stopPropagation();
+            const project = projectsData.find(p => p.id === projectId);
+            const text = encodeURIComponent(`Check out this project: ${project.title[currentLang]}`);
+            const url = `https://twitter.com/intent/tweet?text=${text}`;
+            window.open(url, '_blank');
+            closeAllShareMenus();
+        }
+
+        function shareToFacebook(projectId, event) {
+            event.stopPropagation();
+            const project = projectsData.find(p => p.id === projectId);
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
+            window.open(url, '_blank');
+            closeAllShareMenus();
+        }
+
+        function shareToWhatsApp(projectId, event) {
+            event.stopPropagation();
+            const project = projectsData.find(p => p.id === projectId);
+            const text = encodeURIComponent(`Interested in: ${project.title[currentLang]} - ${project.shortDesc[currentLang]}`);
+            const url = `https://wa.me/61435496047?text=${text}`;
+            window.open(url, '_blank');
+            closeAllShareMenus();
+        }
+
+        function copyLink(projectId, event) {
+            event.stopPropagation();
+            const project = projectsData.find(p => p.id === projectId);
+            const url = `${window.location.origin}${window.location.pathname}#project-${projectId}`;
+            
+            navigator.clipboard.writeText(url).then(() => {
+                alert(currentLang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
+            }).catch(() => {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = url;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert(currentLang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
+            });
+            
+            closeAllShareMenus();
+        }
+
+        function closeAllShareMenus() {
+            document.querySelectorAll('.share-dropdown').forEach(menu => {
+                menu.classList.remove('active');
+            });
         }
 
         /**
          * OPEN MODAL
-         * Abrir Modal - Open project detail modal with 
-         * slider initialization and bilingual content
          */
         function openModal(projectId) {
             currentProject = projectsData.find(p => p.id === projectId);
@@ -1967,6 +2512,12 @@
             document.getElementById('modalSubtitle').textContent = currentProject.category[currentLang];
             document.getElementById('modalDescription').textContent = currentProject.description[currentLang];
             
+            // Render technical specs
+            const specsList = document.getElementById('technicalSpecs');
+            specsList.innerHTML = currentProject.technicalSpecs.map(spec => 
+                `<li>${spec[currentLang]}</li>`
+            ).join('');
+            
             renderSlider();
             document.getElementById('projectModal').classList.add('active');
             document.body.style.overflow = 'hidden';
@@ -1975,8 +2526,6 @@
 
         /**
          * CLOSE MODAL
-         * Cerrar Modal - Close project modal and 
-         * restore body scroll functionality
          */
         function closeModal() {
             document.getElementById('projectModal').classList.remove('active');
@@ -1985,8 +2534,6 @@
 
         /**
          * RENDER SLIDER
-         * Renderizar Slider - Create image slides and 
-         * navigation dots for project modal gallery
          */
         function renderSlider() {
             const track = document.getElementById('sliderTrack');
@@ -2010,8 +2557,6 @@
 
         /**
          * CHANGE SLIDE
-         * Cambiar Diapositiva - Navigate slider forward 
-         * or backward with wraparound functionality
          */
         function changeSlide(direction) {
             currentSlide += direction;
@@ -2022,8 +2567,6 @@
 
         /**
          * GO TO SLIDE
-         * Ir a Diapositiva - Jump to specific slide 
-         * index in project modal slider
          */
         function goToSlide(index) {
             currentSlide = index;
@@ -2032,8 +2575,6 @@
 
         /**
          * UPDATE SLIDER
-         * Actualizar Slider - Update slider position 
-         * and active dot indicators
          */
         function updateSlider() {
             const track = document.getElementById('sliderTrack');
@@ -2045,9 +2586,30 @@
         }
 
         /**
+         * RENDER TESTIMONIALS
+         */
+        function renderTestimonials() {
+            const track = document.getElementById('testimonialsTrack');
+            const dotsContainer = document.getElementById('testimonialDots');
+            
+            track.innerHTML = testimonialsData.map(t => `
+                <div class="testimonial">
+                    <div class="testimonial-avatar">
+                        <img src="${t.image}" alt="${t.name}" loading="lazy">
+                    </div>
+                    <p class="testimonial-text">"${t.text[currentLang]}"</p>
+                    <div class="testimonial-name">${t.name}</div>
+                    <div class="testimonial-company">${t.company}</div>
+                </div>
+            `).join('');
+            
+            dotsContainer.innerHTML = testimonialsData.map((_, i) => `
+                <button class="dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})" aria-label="Testimonial ${i + 1}"></button>
+            `).join('');
+        }
+
+        /**
          * GO TO TESTIMONIAL
-         * Ir a Testimonio - Navigate to specific 
-         * testimonial slide manually
          */
         function goToTestimonial(index) {
             testimonialIndex = index;
@@ -2057,8 +2619,6 @@
 
         /**
          * UPDATE TESTIMONIALS
-         * Actualizar Testimonios - Move testimonial 
-         * slider to current index position
          */
         function updateTestimonials() {
             const track = document.getElementById('testimonialsTrack');
@@ -2071,8 +2631,6 @@
 
         /**
          * START TESTIMONIAL SLIDER
-         * Iniciar Slider de Testimonios - Auto-rotate 
-         * testimonials every 5 seconds as requested
          */
         function startTestimonialSlider() {
             testimonialInterval = setInterval(() => {
@@ -2083,8 +2641,6 @@
 
         /**
          * RESET TESTIMONIAL TIMER
-         * Reiniciar Temporizador - Clear and restart 
-         * auto-rotation interval on manual interaction
          */
         function resetTestimonialTimer() {
             clearInterval(testimonialInterval);
@@ -2093,20 +2649,14 @@
 
         /**
          * SWITCH LANGUAGE
-         * Cambiar Idioma - Toggle between English and 
-         * Spanish, updating all bilingual content
          */
         function switchLanguage(lang) {
             if (currentLang === lang) return;
             currentLang = lang;
             
             // Update language buttons
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.toggle('active', 
-                    (lang === 'en' && btn.textContent === 'EN') || 
-                    (lang === 'es' && btn.textContent === 'ES')
-                );
-            });
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+            document.getElementById('btnEs').classList.toggle('active', lang === 'es');
             
             // Update all elements with data-en and data-es attributes
             document.querySelectorAll('[data-en][data-es]').forEach(el => {
@@ -2115,13 +2665,14 @@
                     if (el.hasAttribute(placeholderAttr)) {
                         el.placeholder = el.getAttribute(placeholderAttr);
                     }
-                } else {
+                } else if (el.tagName !== 'BUTTON' || !el.classList.contains('lang-btn')) {
                     el.textContent = el.getAttribute(`data-${lang}`);
                 }
             });
             
             // Re-render dynamic content
             renderProjects();
+            renderPagination();
             renderTestimonials();
             
             // Update modal if open
@@ -2129,6 +2680,13 @@
                 document.getElementById('modalTitle').textContent = currentProject.title[lang];
                 document.getElementById('modalSubtitle').textContent = currentProject.category[lang];
                 document.getElementById('modalDescription').textContent = currentProject.description[lang];
+                
+                // Update technical specs
+                const specsList = document.getElementById('technicalSpecs');
+                specsList.innerHTML = currentProject.technicalSpecs.map(spec => 
+                    `<li>${spec[lang]}</li>`
+                ).join('');
+                
                 renderSlider();
             }
             
@@ -2138,8 +2696,6 @@
 
         /**
          * INIT EVENT LISTENERS
-         * Inicializar Event Listeners - Setup all event 
-         * handlers for mobile menu, scroll, form and modal
          */
         function initEventListeners() {
             // Mobile menu toggle
@@ -2190,10 +2746,18 @@
                 }
             });
             
+            // Close share menus when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.project-menu')) {
+                    closeAllShareMenus();
+                }
+            });
+            
             // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal();
+                    closeAllShareMenus();
                 }
                 if (currentProject && document.getElementById('projectModal').classList.contains('active')) {
                     if (e.key === 'ArrowLeft') changeSlide(-1);
@@ -2204,8 +2768,6 @@
 
         /**
          * VALIDATE FIELD
-         * Validar Campo - Validate individual form 
-         * field and show/hide error messages
          */
         function validateField(field) {
             const value = field.value.trim();
@@ -2235,8 +2797,6 @@
 
         /**
          * HANDLE FORM SUBMIT
-         * Manejar Envío de Formulario - Validate all 
-         * fields and simulate email sending
          */
         async function handleFormSubmit(e) {
             e.preventDefault();
@@ -2252,7 +2812,6 @@
             });
             
             if (!isValid) {
-                // Scroll to first error
                 const firstError = form.querySelector('.error');
                 if (firstError) {
                     firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -2261,27 +2820,20 @@
                 return;
             }
             
-            // Show loading state
             const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<span class="loading"></span>';
             submitBtn.disabled = true;
             
-            // Simulate API call (replace with actual endpoint)
             try {
                 const formData = new FormData(form);
                 const data = Object.fromEntries(formData);
                 
-                // Here you would normally send to your backend
-                // await fetch('/api/contact', { method: 'POST', body: formData });
-                
                 console.log('Form data:', data);
                 
-                // Show success message
                 document.getElementById('formSuccess').classList.add('show');
                 form.reset();
                 
-                // Hide success after 5 seconds
                 setTimeout(() => {
                     document.getElementById('formSuccess').classList.remove('show');
                 }, 5000);
@@ -2299,8 +2851,6 @@
 
         /**
          * COUNTER ANIMATION
-         * Animación de Contador - Animate stat numbers 
-         * when they come into viewport
          */
         function initCounterAnimation() {
             const counters = document.querySelectorAll('.stat-number');
@@ -2329,29 +2879,6 @@
             }, { threshold: 0.5 });
             
             counters.forEach(counter => observer.observe(counter));
-        }
-
-        /**
-         * SMOOTH SCROLL POLYFILL
-         * Polyfill de Scroll Suave - Fallback for older 
-         * browsers that don't support smooth scroll
-         */
-        if ('scrollBehavior' in document.documentElement.style) {
-            // Native smooth scroll supported
-        } else {
-            // Polyfill for smooth scroll
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
         }
     </script>
 </body>
