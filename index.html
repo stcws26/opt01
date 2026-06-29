@@ -8,6 +8,9 @@
     <meta name="author" content="SoleTrade Welding">
     <title>SoleTrade Welding | Professional Welding Services Sydney</title>
     
+    <!-- Favicon SVG - SoleTrade Logo -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><defs><linearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' stop-color='%232d5016'/><stop offset='100%25' stop-color='%234a7c23'/></linearGradient></defs><rect width='64' height='64' rx='12' fill='url(%23g1)'/><path d='M18 20 L18 44 M18 20 L30 20 Q36 20 36 26 Q36 32 30 32 L18 32 M30 32 Q38 32 38 38 Q38 44 30 44 L18 44' stroke='white' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/><circle cx='46' cy='18' r='2.5' fill='%23ff6b35'/><circle cx='52' cy='24' r='2' fill='%23ff6b35'/><circle cx='48' cy='30' r='1.5' fill='%23ff6b35'/><path d='M44 36 L44 48 M40 42 L48 42' stroke='%23ff6b35' stroke-width='3' stroke-linecap='round'/></svg>">
+    
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -82,6 +85,19 @@
         }
 
         /* ============================================
+           LOGO STYLES
+           ============================================ */
+        .logo-svg {
+            height: 60px;
+            width: 60px;
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-svg {
+            transform: scale(1.05);
+        }
+
+        /* ============================================
            HEADER & NAVIGATION
            ============================================ */
         .header {
@@ -112,12 +128,6 @@
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-
-        .logo img {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
         }
 
         .logo-text {
@@ -246,7 +256,7 @@
             animation: fadeInUp 1s ease;
         }
 
-        .hero h1 span {
+        .hero h1 .highlight {
             color: var(--color-orange);
         }
 
@@ -575,11 +585,11 @@
             background: var(--color-white);
             border-radius: 10px;
             box-shadow: var(--shadow-lg);
-            padding: 1rem;
+            padding: 0.75rem;
             display: none;
             flex-direction: column;
-            gap: 0.5rem;
-            min-width: 200px;
+            gap: 0.25rem;
+            min-width: 220px;
             z-index: 20;
         }
 
@@ -595,6 +605,7 @@
             border-radius: 5px;
             transition: var(--transition);
             cursor: pointer;
+            font-size: 0.95rem;
         }
 
         .share-option:hover {
@@ -611,7 +622,13 @@
         .share-option.x i { color: #000000; }
         .share-option.facebook i { color: #1877F2; }
         .share-option.whatsapp i { color: #25D366; }
-        .share-option.link i { color: var(--color-green); }
+        .share-option.link i { color: var(--color-orange); }
+
+        .share-divider {
+            height: 1px;
+            background: #eee;
+            margin: 0.25rem 0;
+        }
 
         .project-overlay {
             position: absolute;
@@ -1155,10 +1172,15 @@
             margin-bottom: 2rem;
         }
 
+        .footer-brand .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
         .footer-brand .logo-text {
             color: var(--color-white);
-            margin-bottom: 1rem;
-            display: block;
         }
 
         .footer-brand p {
@@ -1290,6 +1312,15 @@
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .logo-svg {
+                height: 50px;
+                width: 50px;
+            }
+
+            .logo-text {
+                font-size: 1.2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1346,6 +1377,29 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* Toast notification for copy link */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--color-green);
+            color: var(--color-white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            z-index: 3000;
+            transition: transform 0.3s ease;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -1354,7 +1408,37 @@
     <header class="header" id="header">
         <div class="header-container">
             <a href="#home" class="logo">
-                <div style="width:60px;height:60px;background:var(--color-green);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:1.5rem;">ST</div>
+                <!-- SoleTrade SVG Logo -->
+                <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="SoleTrade Welding Logo">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#2d5016"/>
+                            <stop offset="100%" stop-color="#4a7c23"/>
+                        </linearGradient>
+                        <linearGradient id="sparkGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff6b35"/>
+                            <stop offset="100%" stop-color="#ffaa33"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Background rounded square -->
+                    <rect width="64" height="64" rx="12" fill="url(#logoGrad)"/>
+                    <!-- "S" letter stylized -->
+                    <path d="M14 20 Q14 16 18 16 L26 16 Q30 16 30 20 Q30 24 26 24 L18 24 Q14 24 14 28 Q14 32 18 32 L26 32 Q30 32 30 28" 
+                          stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- "T" letter stylized -->
+                    <path d="M34 16 L48 16 M41 16 L41 32" 
+                          stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    <!-- Welding sparks -->
+                    <circle cx="50" cy="14" r="2" fill="url(#sparkGrad)"/>
+                    <circle cx="56" cy="20" r="1.5" fill="url(#sparkGrad)"/>
+                    <circle cx="54" cy="28" r="1.8" fill="url(#sparkGrad)"/>
+                    <circle cx="48" cy="10" r="1.2" fill="url(#sparkGrad)"/>
+                    <!-- Welding electrode / flame -->
+                    <path d="M36 38 Q38 42 40 38 Q42 44 44 40 Q46 46 48 42 L48 52 L36 52 Z" 
+                          fill="url(#sparkGrad)"/>
+                    <!-- Base line -->
+                    <rect x="14" y="52" width="36" height="3" rx="1.5" fill="white" opacity="0.9"/>
+                </svg>
                 <span class="logo-text">Sole<span>Trade</span></span>
             </a>
             
@@ -1383,8 +1467,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1 data-en="Professional <span>Welding</span> Services" data-es="Servicios Profesionales de <span>Soldadura</span>">
-                Professional <span>Welding</span> Services
+            <h1 id="heroTitle" data-en='Professional <span class="highlight">Welding</span> Services' data-es='Servicios Profesionales de <span class="highlight">Soldadura</span>'>
+                Professional <span class="highlight">Welding</span> Services
             </h1>
             <p data-en="Expert mobile welding solutions for industrial, commercial and residential projects in Sydney. Quality workmanship guaranteed." 
                data-es="Soluciones expertas de soldadura móvil para proyectos industriales, comerciales y residenciales en Sydney. Calidad garantizada.">
@@ -1812,7 +1896,33 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <span class="logo-text">Sole<span style="color:var(--color-orange)">Trade</span></span>
+                    <div class="footer-logo">
+                        <svg class="logo-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-label="SoleTrade Welding Logo">
+                            <defs>
+                                <linearGradient id="logoGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#2d5016"/>
+                                    <stop offset="100%" stop-color="#4a7c23"/>
+                                </linearGradient>
+                                <linearGradient id="sparkGradFooter" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#ff6b35"/>
+                                    <stop offset="100%" stop-color="#ffaa33"/>
+                                </linearGradient>
+                            </defs>
+                            <rect width="64" height="64" rx="12" fill="url(#logoGradFooter)"/>
+                            <path d="M14 20 Q14 16 18 16 L26 16 Q30 16 30 20 Q30 24 26 24 L18 24 Q14 24 14 28 Q14 32 18 32 L26 32 Q30 32 30 28" 
+                                  stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M34 16 L48 16 M41 16 L41 32" 
+                                  stroke="white" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="50" cy="14" r="2" fill="url(#sparkGradFooter)"/>
+                            <circle cx="56" cy="20" r="1.5" fill="url(#sparkGradFooter)"/>
+                            <circle cx="54" cy="28" r="1.8" fill="url(#sparkGradFooter)"/>
+                            <circle cx="48" cy="10" r="1.2" fill="url(#sparkGradFooter)"/>
+                            <path d="M36 38 Q38 42 40 38 Q42 44 44 40 Q46 46 48 42 L48 52 L36 52 Z" 
+                                  fill="url(#sparkGradFooter)"/>
+                            <rect x="14" y="52" width="36" height="3" rx="1.5" fill="white" opacity="0.9"/>
+                        </svg>
+                        <span class="logo-text">Sole<span>Trade</span></span>
+                    </div>
                     <p data-en="Professional welding services in Sydney. Quality workmanship, competitive prices, and customer satisfaction guaranteed." 
                        data-es="Servicios profesionales de soldadura en Sydney. Mano de obra de calidad, precios competitivos y satisfacción del cliente garantizada.">
                         Professional welding services in Sydney. Quality workmanship, competitive prices, and customer satisfaction guaranteed.
@@ -1873,6 +1983,12 @@
             </div>
         </div>
     </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Link copied!</span>
+    </div>
 
     <!-- JavaScript -->
     <script>
@@ -2328,34 +2444,38 @@
             const end = start + projectsPerPage;
             const projectsToShow = projectsData.slice(start, end);
             
+            const copyLinkText = currentLang === 'en' ? 'Copy Link' : 'Copiar Enlace';
+            const shareText = currentLang === 'en' ? 'Share' : 'Compartir';
+            
             grid.innerHTML = projectsToShow.map(project => `
                 <div class="project-card" onclick="openModal(${project.id})">
                     <div class="project-image">
                         <img src="${project.images[0].src}" alt="${project.title[currentLang]}" loading="lazy">
                         <div class="project-menu">
-                            <div class="menu-dots" onclick="toggleShareMenu(event, ${project.id})">
+                            <div class="menu-dots" onclick="toggleShareMenu(event, ${project.id})" aria-label="${shareText}">
                                 <i class="fas fa-ellipsis-v"></i>
                             </div>
                             <div class="share-dropdown" id="share-${project.id}">
                                 <div class="share-option instagram" onclick="shareToInstagram(${project.id}, event)">
                                     <i class="fab fa-instagram"></i>
-                                    <span>${currentLang === 'en' ? 'Instagram' : 'Instagram'}</span>
+                                    <span>Instagram</span>
                                 </div>
                                 <div class="share-option x" onclick="shareToX(${project.id}, event)">
                                     <i class="fab fa-x-twitter"></i>
-                                    <span>X</span>
+                                    <span>X (Twitter)</span>
                                 </div>
                                 <div class="share-option facebook" onclick="shareToFacebook(${project.id}, event)">
                                     <i class="fab fa-facebook-f"></i>
-                                    <span>${currentLang === 'en' ? 'Facebook' : 'Facebook'}</span>
+                                    <span>Facebook</span>
                                 </div>
                                 <div class="share-option whatsapp" onclick="shareToWhatsApp(${project.id}, event)">
                                     <i class="fab fa-whatsapp"></i>
-                                    <span>${currentLang === 'en' ? 'WhatsApp' : 'WhatsApp'}</span>
+                                    <span>WhatsApp</span>
                                 </div>
+                                <div class="share-divider"></div>
                                 <div class="share-option link" onclick="copyLink(${project.id}, event)">
                                     <i class="fas fa-link"></i>
-                                    <span>${currentLang === 'en' ? 'Copy Link' : 'Copiar Enlace'}</span>
+                                    <span>${copyLinkText}</span>
                                 </div>
                             </div>
                         </div>
@@ -2386,17 +2506,14 @@
             
             let html = '';
             
-            // Previous button
             html += `<button onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
                 <i class="fas fa-chevron-left"></i> ${currentLang === 'en' ? 'Prev' : 'Ant'}
             </button>`;
             
-            // Page numbers
             for (let i = 1; i <= totalPages; i++) {
                 html += `<button onclick="changePage(${i})" class="${i === currentPage ? 'active' : ''}">${i}</button>`;
             }
             
-            // Next button
             html += `<button onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
                 ${currentLang === 'en' ? 'Next' : 'Sig'} <i class="fas fa-chevron-right"></i>
             </button>`;
@@ -2415,7 +2532,6 @@
             renderProjects();
             renderPagination();
             
-            // Scroll to projects section
             document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
         }
 
@@ -2425,14 +2541,12 @@
         function toggleShareMenu(event, projectId) {
             event.stopPropagation();
             
-            // Close all other menus
             document.querySelectorAll('.share-dropdown').forEach(menu => {
                 if (menu.id !== `share-${projectId}`) {
                     menu.classList.remove('active');
                 }
             });
             
-            // Toggle current menu
             const menu = document.getElementById(`share-${projectId}`);
             menu.classList.toggle('active');
         }
@@ -2451,7 +2565,7 @@
         function shareToX(projectId, event) {
             event.stopPropagation();
             const project = projectsData.find(p => p.id === projectId);
-            const text = encodeURIComponent(`Check out this project: ${project.title[currentLang]}`);
+            const text = encodeURIComponent(`Check out this welding project: ${project.title[currentLang]} - SoleTrade Welding Sydney`);
             const url = `https://twitter.com/intent/tweet?text=${text}`;
             window.open(url, '_blank');
             closeAllShareMenus();
@@ -2459,7 +2573,6 @@
 
         function shareToFacebook(projectId, event) {
             event.stopPropagation();
-            const project = projectsData.find(p => p.id === projectId);
             const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`;
             window.open(url, '_blank');
             closeAllShareMenus();
@@ -2476,23 +2589,47 @@
 
         function copyLink(projectId, event) {
             event.stopPropagation();
-            const project = projectsData.find(p => p.id === projectId);
             const url = `${window.location.origin}${window.location.pathname}#project-${projectId}`;
             
-            navigator.clipboard.writeText(url).then(() => {
-                alert(currentLang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
-            }).catch(() => {
-                // Fallback
-                const textArea = document.createElement('textarea');
-                textArea.value = url;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                alert(currentLang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!');
-            });
+            const copyMsg = currentLang === 'en' ? 'Link copied to clipboard!' : '¡Enlace copiado al portapapeles!';
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => {
+                    showToast(copyMsg);
+                }).catch(() => {
+                    fallbackCopy(url, copyMsg);
+                });
+            } else {
+                fallbackCopy(url, copyMsg);
+            }
             
             closeAllShareMenus();
+        }
+
+        function fallbackCopy(text, message) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-9999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            try {
+                document.execCommand('copy');
+                showToast(message);
+            } catch (err) {
+                alert(message);
+            }
+            document.body.removeChild(textArea);
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMessage');
+            toastMsg.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
         }
 
         function closeAllShareMenus() {
@@ -2512,7 +2649,6 @@
             document.getElementById('modalSubtitle').textContent = currentProject.category[currentLang];
             document.getElementById('modalDescription').textContent = currentProject.description[currentLang];
             
-            // Render technical specs
             const specsList = document.getElementById('technicalSpecs');
             specsList.innerHTML = currentProject.technicalSpecs.map(spec => 
                 `<li>${spec[currentLang]}</li>`
@@ -2648,7 +2784,7 @@
         }
 
         /**
-         * SWITCH LANGUAGE
+         * SWITCH LANGUAGE - FIXED to handle HTML content properly
          */
         function switchLanguage(lang) {
             if (currentLang === lang) return;
@@ -2665,8 +2801,20 @@
                     if (el.hasAttribute(placeholderAttr)) {
                         el.placeholder = el.getAttribute(placeholderAttr);
                     }
-                } else if (el.tagName !== 'BUTTON' || !el.classList.contains('lang-btn')) {
+                } else if (el.tagName === 'OPTION') {
+                    // For select options, use textContent
                     el.textContent = el.getAttribute(`data-${lang}`);
+                } else if (el.id === 'heroTitle') {
+                    // Hero title contains HTML (<span>), use innerHTML
+                    el.innerHTML = el.getAttribute(`data-${lang}`);
+                } else if (el.tagName !== 'BUTTON' || !el.classList.contains('lang-btn')) {
+                    // Check if content contains HTML tags
+                    const content = el.getAttribute(`data-${lang}`);
+                    if (content && /<[a-z][\s\S]*>/i.test(content)) {
+                        el.innerHTML = content;
+                    } else {
+                        el.textContent = content;
+                    }
                 }
             });
             
@@ -2681,7 +2829,6 @@
                 document.getElementById('modalSubtitle').textContent = currentProject.category[lang];
                 document.getElementById('modalDescription').textContent = currentProject.description[lang];
                 
-                // Update technical specs
                 const specsList = document.getElementById('technicalSpecs');
                 specsList.innerHTML = currentProject.technicalSpecs.map(spec => 
                     `<li>${spec[lang]}</li>`
@@ -2698,7 +2845,6 @@
          * INIT EVENT LISTENERS
          */
         function initEventListeners() {
-            // Mobile menu toggle
             const mobileToggle = document.getElementById('mobileMenuToggle');
             const navMenu = document.getElementById('navMenu');
             
@@ -2707,7 +2853,6 @@
                 navMenu.classList.toggle('active');
             });
             
-            // Close mobile menu on link click
             navMenu.querySelectorAll('.nav-link').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileToggle.classList.remove('active');
@@ -2715,7 +2860,6 @@
                 });
             });
             
-            // Header scroll effect
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
                 if (window.scrollY > 100) {
@@ -2725,11 +2869,9 @@
                 }
             });
             
-            // Form validation and submission
             const form = document.getElementById('contactForm');
             form.addEventListener('submit', handleFormSubmit);
             
-            // Real-time validation
             form.querySelectorAll('input, select, textarea').forEach(field => {
                 field.addEventListener('blur', () => validateField(field));
                 field.addEventListener('input', () => {
@@ -2739,21 +2881,18 @@
                 });
             });
             
-            // Modal close on outside click
             document.getElementById('projectModal').addEventListener('click', (e) => {
                 if (e.target.id === 'projectModal') {
                     closeModal();
                 }
             });
             
-            // Close share menus when clicking outside
             document.addEventListener('click', (e) => {
                 if (!e.target.closest('.project-menu')) {
                     closeAllShareMenus();
                 }
             });
             
-            // Keyboard navigation
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeModal();
